@@ -1,0 +1,393 @@
+{
+  "name": "vuln-db",
+  "version": "1.0.0",
+  "label": "VulnDB",
+  "category": "Vulnerability and Risk Management",
+  "description": "VulnDB is the most comprehensive and timely vulnerability intelligence available and provides actionable information about the latest in security vulnerabilities. This connector facilitates the automated operations related to vulnerabilities, products, and vendors.",
+  "publisher": "Community",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "help_online": "",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "ingestion_supported": false,
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "description": "The service-based URI to which you will connect and perform the automated operations.",
+        "value": "https://vulndb.cyberriskanalytics.com",
+        "placeholder": "https://vulndb.cyberriskanalytics.com"
+      },
+      {
+        "title": "Client ID",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "client_id",
+        "description": "Unique Client ID of the VulnDB that is used to create an authentication token required to access the VulnDB API."
+      },
+      {
+        "title": "Client Secret",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "client_secret",
+        "description": "Unique Client Secret of the VulnDB that is used to create an authentication token required to access the API."
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True.",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_vuln_list",
+      "category": "investigation",
+      "annotation": "get_vuln_list",
+      "description": "Retrieves a list of all vulnerabilities from VulnDB based on the start time, end time or other input parameters you have specified.",
+      "title": "Get Vulnerability List",
+      "parameters": [
+        {
+          "title": "Start Date",
+          "description": "Start date and time from when you want to retrieve vulnerabilities from the VulnDB.",
+          "type": "datetime",
+          "name": "start_date",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Date",
+          "description": "End date and time till when you want to retrieve vulnerabilities from the VulnDB.",
+          "type": "datetime",
+          "name": "end_date",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "operation": "get_vuln_details",
+      "category": "investigation",
+      "annotation": "get_vuln_details",
+      "description": "Retrieves details of a specific vulnerability from VulnDB based on the filter or other input parameter you have specified.",
+      "title": "Get Vulnerability Details",
+      "parameters": [
+        {
+          "title": "Filter By",
+          "name": "filter_by",
+          "description": "Filter a vulnerabilities whose details you want to retrieve from VulnDB.",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Vulnerability ID",
+            "Vendor ID",
+            "Product ID",
+            "CVE ID"
+          ],
+          "onchange": {
+            "Vulnerability ID": [
+              {
+                "title": "Vulnerability ID",
+                "name": "vuln_id",
+                "description": "ID of the vulnerability whose details you want to retrieve from VulnDB.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ],
+            "Vendor ID": [
+              {
+                "title": "Vendor ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "vendor_id",
+                "description": "ID of the vendor whose vulnerability details you want to retrieve from VulnDB."
+              }
+            ],
+            "Product ID": [
+              {
+                "title": "Product ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "product_id",
+                "description": "ID of the product whose vulnerability details you want to retrieve from VulnDB."
+              }
+            ],
+            "CVE ID": [
+              {
+                "title": "CVE ID",
+                "name": "cve_id",
+                "description": "ID of the cve whose vulnerability details you want to retrieve from VulnDB.",
+                "type": "text",
+                "visible": true,
+                "editable": true,
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "operation": "get_vendor_details",
+      "category": "investigation",
+      "annotation": "get_vendor_details",
+      "description": "Retrieves details of a list of all vendors or specific vendor from VulnDB based on the vendor ID, vendor name or other input parameters you have specified.",
+      "title": "Get Vendor Details",
+      "parameters": [
+        {
+          "title": "Vendor",
+          "name": "vendor",
+          "description": "Specify a vendor whose details you want to retrieve from VulnDB.",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "options": [
+            "Vendor ID",
+            "Vendor Name"
+          ],
+          "onchange": {
+            "Vendor ID": [
+              {
+                "title": "Vendor ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "vendor_id",
+                "description": "ID of the vendor whose details you want to retrieve from VulnDB."
+              }
+            ],
+            "Vendor Name": [
+              {
+                "title": "Vendor Name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "vendor_name",
+                "description": "Name of the vendor whose details you want to retrieve from VulnDB."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "operation": "get_product_details",
+      "category": "investigation",
+      "annotation": "get_product_details",
+      "description": "Retrieves details of a list of all products or specific product from VulnDB based on the vendor ID, vendor name or other input parameters you have specified.",
+      "title": "Get Product Details",
+      "parameters": [
+        {
+          "title": "Vendor",
+          "name": "vendor",
+          "description": "Specify a vendor whose details you want to retrieve from VulnDB.",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "options": [
+            "Vendor ID",
+            "Vendor Name"
+          ],
+          "onchange": {
+            "Vendor ID": [
+              {
+                "title": "Vendor ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "vendor_id",
+                "description": "ID of the vendor whose details you want to retrieve from VulnDB."
+              }
+            ],
+            "Vendor Name": [
+              {
+                "title": "Vendor Name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "vendor_name",
+                "description": "Name of the vendor whose details you want to retrieve from VulnDB."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "operation": "get_product_version",
+      "category": "investigation",
+      "annotation": "get_product_version",
+      "description": "Retrieves version of a specific product from VulnDB based on the product ID, product name or other input parameters you have specified.",
+      "title": "Get Product Version",
+      "parameters": [
+        {
+          "title": "Product",
+          "name": "product",
+          "description": "Specify a product whose version details you want to retrieve from VulnDB.",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "options": [
+            "Product ID",
+            "Product Name"
+          ],
+          "onchange": {
+            "Product ID": [
+              {
+                "title": "Product ID",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "product_id",
+                "description": "ID of the product whose version details you want to retrieve from VulnDB."
+              }
+            ],
+            "Vendor Name": [
+              {
+                "title": "Product Name",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "name": "product_name",
+                "description": "Name of the product whose version details you want to retrieve from VulnDB."
+              }
+            ]
+          }
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    },
+    {
+      "operation": "get_vuln_by_vendor_and_product",
+      "category": "investigation",
+      "annotation": "get_vuln_by_vendor_and_product",
+      "description": "Retrieves a list of all vulnerabilities from VulnDB based on the vendor ID, product ID or other input parameters you have specified.",
+      "title": "Get Vulnerability By Vendor and Product",
+      "parameters": [
+        {
+          "title": "Vendor ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "vendor_id",
+          "description": "ID of the vendor whose vulnerability details you want to retrieve from VulnDB."
+        },
+        {
+          "title": "Product ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "product_id",
+          "description": "ID of the product whose vulnerability details you want to retrieve from VulnDB."
+        },
+        {
+          "title": "Limit",
+          "name": "limit",
+          "type": "integer",
+          "tooltip": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "description": "(Optional) Maximum number of records that this operation should retrieve from the VulnDB.",
+          "required": false,
+          "visible": true,
+          "editable": true
+        }
+      ],
+      "output_schema": {},
+      "enabled": true
+    }
+  ]
+}
