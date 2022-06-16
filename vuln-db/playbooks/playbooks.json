@@ -1,0 +1,603 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - VulnDB - 1.0.0",
+      "description": null,
+      "visible": true,
+      "image": null,
+      "uuid": "48351c38-cef2-467a-b7a3-90c2131ade10",
+      "id": 286,
+      "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+      "createDate": 1655206094.008143,
+      "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+      "modifyDate": 1655206094.008143,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Product Version",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves version of a specific product from VulnDB based on the product ID, product name or other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206630,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/18e66505-57fe-4436-948c-ca597e459bd0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "74a52a33-a7da-43b7-bd0e-eddb75bc9d56",
+                "title": "VulnDB: Get Product Version",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "18e66505-57fe-4436-948c-ca597e459bd0"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Product Version",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": {
+                  "limit": "",
+                  "product": "Product ID",
+                  "product_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_product_version",
+                "operationTitle": "Get Product Version",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "daeb82d1-fd5f-407e-b3c4-1dd5effd6e5c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Product Version",
+              "targetStep": "/api/3/workflow_steps/daeb82d1-fd5f-407e-b3c4-1dd5effd6e5c",
+              "sourceStep": "/api/3/workflow_steps/18e66505-57fe-4436-948c-ca597e459bd0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "43bbb7ae-bbb4-484a-aa23-30317e369844"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "6af3a335-b2b2-4a81-896c-2d784fb832db",
+          "id": 2578,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206590.812434,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206625.364709,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Product Details",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves details of a list of all products or specific product from VulnDB based on the vendor ID, vendor name or other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206570,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ae3af926-c4fb-4a1a-b86b-3080a0300bca",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Product Details",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_product_details",
+                "operationTitle": "Get Product Details",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "6cd59a8c-75d5-42e7-b844-95374792f9f4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "197c9c46-6bd2-4bba-b66c-c5c7e1a2fd0d",
+                "title": "VulnDB: Get Product Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "ae3af926-c4fb-4a1a-b86b-3080a0300bca"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Product Details",
+              "targetStep": "/api/3/workflow_steps/6cd59a8c-75d5-42e7-b844-95374792f9f4",
+              "sourceStep": "/api/3/workflow_steps/ae3af926-c4fb-4a1a-b86b-3080a0300bca",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "748bdd7a-dcc0-4fb9-9a81-254ee4c7ba05"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "85d9db67-2f8d-4031-a486-1c5de5dfd47e",
+          "id": 2577,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206538.076084,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206565.789405,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vendor Details",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves details of a list of all vendors or specific vendor from VulnDB based on the vendor ID, vendor name or other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206515,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d96ca74f-468a-4c50-b311-c8c628b8ea82",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "1526ea4e-5d72-41e3-b32e-c7f7013c2814",
+                "title": "VulnDB: Get Vendor Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d96ca74f-468a-4c50-b311-c8c628b8ea82"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vendor Details",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": {
+                  "limit": "",
+                  "vendor": ""
+                },
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_vendor_details",
+                "operationTitle": "Get Vendor Details",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "e3eb85fa-facf-476c-8311-cf7743e0853a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Vendor Details",
+              "targetStep": "/api/3/workflow_steps/e3eb85fa-facf-476c-8311-cf7743e0853a",
+              "sourceStep": "/api/3/workflow_steps/d96ca74f-468a-4c50-b311-c8c628b8ea82",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f9bdc34b-93f3-4524-9b70-6f02caba7743"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "a758e689-d607-4030-9383-ef621406dd89",
+          "id": 2576,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206428.801849,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206510.540934,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerability List",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of all vulnerabilities from VulnDB based on the start time, end time or other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206162,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/828f331d-f207-4673-b7f0-2e15a245e5b7",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerability List",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": {
+                  "limit": "",
+                  "end_date": "2022-06-14T11:29:10.500Z",
+                  "start_date": "2022-06-14T11:29:07.299Z"
+                },
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_vuln_list",
+                "operationTitle": "Get Vulnerability List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "4dc12d98-b4f0-4482-b22a-8e431e94cece"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f7052759-04ff-4a6c-b5dd-b9eea18dc052",
+                "title": "VulnDB: Get Vulnerability List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "828f331d-f207-4673-b7f0-2e15a245e5b7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Vulnerability List",
+              "targetStep": "/api/3/workflow_steps/4dc12d98-b4f0-4482-b22a-8e431e94cece",
+              "sourceStep": "/api/3/workflow_steps/828f331d-f207-4673-b7f0-2e15a245e5b7",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "3c9610cc-5c9e-4db3-a53c-d34deb0c028b"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "e07cda03-bb26-4290-b869-30ae194840ce",
+          "id": 2574,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206121.178716,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206159.441076,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerability Details",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves details of a specific vulnerability from VulnDB based on the filter or other input parameter you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206405,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/7f096a02-1219-406b-a2e1-21987c262fcd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5221bcfc-c686-4452-bfde-5a8e57e4a5f0",
+                "title": "VulnDB: Get Vulnerability Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "7f096a02-1219-406b-a2e1-21987c262fcd"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerability Details",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": {
+                  "limit": "",
+                  "vuln_id": "1",
+                  "filter_by": "Vulnerability ID"
+                },
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_vuln_details",
+                "operationTitle": "Get Vulnerability Details",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "bb197637-a3dc-4d9d-963d-6a614ca6b1da"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Vulnerability Details",
+              "targetStep": "/api/3/workflow_steps/bb197637-a3dc-4d9d-963d-6a614ca6b1da",
+              "sourceStep": "/api/3/workflow_steps/7f096a02-1219-406b-a2e1-21987c262fcd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f3b906ec-909d-46fa-9a7d-909b91b9f6a8"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "e37beb4c-df72-4135-8f27-246c4e094fd1",
+          "id": 2575,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206186.587328,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206400.598337,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Vulnerability By Vendor and Product",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of all vulnerabilities from VulnDB based on the vendor ID, product ID or other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1655206685,
+          "collection": "/api/3/workflow_collections/48351c38-cef2-467a-b7a3-90c2131ade10",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/1dd9a25f-2bac-4092-8848-06e92fac5c63",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b5c95e51-411c-4c12-8b73-d9c5cbb24fb1",
+                "title": "VulnDB: Get Vulnerability By Vendor and Product",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "1dd9a25f-2bac-4092-8848-06e92fac5c63"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Vulnerability By Vendor and Product",
+              "description": null,
+              "arguments": {
+                "name": "VulnDB",
+                "config": "",
+                "params": {
+                  "limit": "",
+                  "vendor_id": "1",
+                  "product_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "vuln-db",
+                "operation": "get_vuln_by_vendor_and_product",
+                "operationTitle": "Get Vulnerability By Vendor and Product",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "53f91b4c-9ea2-43dc-9f7a-25bf18157cef"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Vulnerability By Vendor and Product",
+              "targetStep": "/api/3/workflow_steps/53f91b4c-9ea2-43dc-9f7a-25bf18157cef",
+              "sourceStep": "/api/3/workflow_steps/1dd9a25f-2bac-4092-8848-06e92fac5c63",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "cbb49914-e4d2-44a1-90f1-bed3e6bd8b91"
+            }
+          ],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "e3f84f4c-d8a0-463a-9ccc-e51be489694b",
+          "id": 2579,
+          "createUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "createDate": 1655206651.675909,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1655206680.776152,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "vuln-db"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "vuln-db"
+  ]
+}
