@@ -1,6 +1,7 @@
 ## About the connector
 VulnDB is the most comprehensive and timely vulnerability intelligence available and provides actionable information about the latest in security vulnerabilities. This connector facilitates the automated operations related to vulnerabilities, products, and vendors.
 <p>This document provides information about the VulnDB Connector, which facilitates automated interactions, with a VulnDB server using FortiSOAR&trade; playbooks. Add the VulnDB Connector as a step in FortiSOAR&trade; playbooks and perform automated operations with VulnDB.</p>
+
 ### Version information
 
 Connector Version: 1.0.0
@@ -17,7 +18,7 @@ Certified: No
 - You must have the URL of VulnDB server to which you will connect and perform automated operations and credentials to access that server.
 - The FortiSOAR&trade; server should have outbound connectivity to port 443 on the VulnDB server.
 
-## Minimum Permissions Required
+### Minimum Permissions Required
 - N/A
 
 ## Configuring the connector
@@ -29,6 +30,7 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 <tr><td>Client Secret<br></td><td>Unique Client Secret of the VulnDB that is used to create an authentication token required to access the API.<br>
 <tr><td>Verify SSL<br></td><td>Specifies whether the SSL certificate for the server is to be verified or not. <br/>By default, this option is set as True.<br></td></tr>
 </tbody></table>
+
 ## Actions supported by the connector
 The following automated operations can be included in playbooks and you can also use the annotations to access operations from FortiSOAR&trade; release 4.10.0 and onwards:
 <table border=1><thead><tr><th>Function<br></th><th>Description<br></th><th>Annotation and Category<br></th></tr></thead><tbody><tr><td>Get Vulnerability List<br></td><td>Retrieves a list of all vulnerabilities from VulnDB based on the start time, end time or other input parameters you have specified.<br></td><td>get_vuln_list <br/>Investigation<br></td></tr>
@@ -38,56 +40,69 @@ The following automated operations can be included in playbooks and you can also
 <tr><td>Get Product Version<br></td><td>Retrieves version of a specific product from VulnDB based on the product ID, product name or other input parameters you have specified.<br></td><td>get_product_version <br/>Investigation<br></td></tr>
 <tr><td>Get Vulnerability By Vendor and Product<br></td><td>Retrieves a list of all vulnerabilities from VulnDB based on the vendor ID, product ID or other input parameters you have specified.<br></td><td>get_vuln_by_vendor_and_product <br/>Investigation<br></td></tr>
 </tbody></table>
+
 ### operation: Get Vulnerability List
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Start Date<br></td><td>Start date and time from when you want to retrieve vulnerabilities from the VulnDB.<br>
 </td></tr><tr><td>End Date<br></td><td>End date and time till when you want to retrieve vulnerabilities from the VulnDB.<br>
 </td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ### operation: Get Vulnerability Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Filter By<br></td><td>Filter a vulnerabilities whose details you want to retrieve from VulnDB.<br>
 <strong>If you choose 'Vulnerability ID'</strong><ul><li>Vulnerability ID: ID of the vulnerability whose details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'Vendor ID'</strong><ul><li>Vendor ID: ID of the vendor whose vulnerability details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'Product ID'</strong><ul><li>Product ID: ID of the product whose vulnerability details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'CVE ID'</strong><ul><li>CVE ID: ID of the cve whose vulnerability details you want to retrieve from VulnDB.</li></ul></td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ### operation: Get Vendor Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Vendor<br></td><td>Specify a vendor whose details you want to retrieve from VulnDB.<br>
 <strong>If you choose 'Vendor ID'</strong><ul><li>Vendor ID: ID of the vendor whose details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'Vendor Name'</strong><ul><li>Vendor Name: Name of the vendor whose details you want to retrieve from VulnDB.</li></ul></td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ### operation: Get Product Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Vendor<br></td><td>Specify a vendor whose details you want to retrieve from VulnDB.<br>
 <strong>If you choose 'Vendor ID'</strong><ul><li>Vendor ID: ID of the vendor whose details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'Vendor Name'</strong><ul><li>Vendor Name: Name of the vendor whose details you want to retrieve from VulnDB.</li></ul></td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ### operation: Get Product Version
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Product<br></td><td>Specify a product whose version details you want to retrieve from VulnDB.<br>
 <strong>If you choose 'Product ID'</strong><ul><li>Product ID: ID of the product whose version details you want to retrieve from VulnDB.</li></ul><strong>If you choose 'Vendor Name'</strong><ul><li>Product Name: Name of the product whose version details you want to retrieve from VulnDB.</li></ul></td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ### operation: Get Vulnerability By Vendor and Product
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Vendor ID<br></td><td>ID of the vendor whose vulnerability details you want to retrieve from VulnDB.<br>
 </td></tr><tr><td>Product ID<br></td><td>ID of the product whose vulnerability details you want to retrieve from VulnDB.<br>
 </td></tr><tr><td>Limit<br></td><td>(Optional) Maximum number of records that this operation should retrieve from the VulnDB.<br>
 </td></tr></tbody></table>
+
 #### Output
 
  The output contains a non-dictionary value.
+
 ## Included playbooks
 The `Sample - vuln-db - 1.0.0` playbook collection comes bundled with the VulnDB connector. These playbooks contain steps using which you can perform all supported actions. You can see bundled playbooks in the **Automation** > **Playbooks** section in FortiSOAR<sup>TM</sup> after importing the VulnDB connector.
 
